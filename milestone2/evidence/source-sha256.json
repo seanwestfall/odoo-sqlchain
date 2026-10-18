@@ -1,0 +1,23 @@
+{
+  "chainsql/boundary/service.py": "339b9fad6c87838a291e0943b9b58a79a5f8f489d02f6775deb8b3fe300b7ada",
+  "chainsql/boundary/signer.py": "b7812cb71122d79c296f335fc7f77e3c9dd34dc85a9c17f742252e72ef15fd54",
+  "chainsql/boundary/worker.py": "22b05de2327e114ac4c75f96b659ce1c8bc565440499287def92644e65041015",
+  "chainsql/extension/chainsql--0.1.0--0.2.0.sql": "735af06703b54899fd0df1477f13cee2c5c6752b2ca425c3ab13364a0883aba4",
+  "chainsql/extension/chainsql--0.1.0.sql": "f082be8c712e81731db0bbb05244a382cbfb817a9eda3fbfcdc00f35362fab03",
+  "chainsql/extension/chainsql--0.2.0--0.2.1.sql": "d5012a7b394c1fa04864a463f1b802a3f3df6c3c3f1be11f587a97e6390504d7",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/__init__.py": "16e2348f400e3a07f9569c40495592b51d519ff5e0b85030c3e41467e0f1bda5",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/__manifest__.py": "9c5209dff8426582c52802160a1e25d3f270ebcd4245a9d06cd8aaa1b12b00a0",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/models/__init__.py": "e55ad5d604a27e7ce4adedbb27367a25fefd6bf73669290de2a385a68b55ef93",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/models/operation.py": "20146a61d1b989ae316ad49c09ca6efddd101d4ceec94a273e5180e179cefa4f",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/sql/invalidation.sql": "9e47b887ca9c72b16bd030aa9948b11e2d27402f997e164e9a48e6bb4c873a0c",
+  "chainsql/odoo_addons/chainsql_transfer_boundary/views/operation.xml": "7620dbdb669d54ff7c1ff41b7adb59b338c249c4890d5567484d58874dfb8b0d",
+  "milestone2/scripts/install.sql": "8ac76621e8deb392a4607210e83ab7bb9a6070f664b915bb6e56dc7d592dc3e4",
+  "milestone2/scripts/odoo_invalidation.py": "5c7c71047ab6b6d30c5e224adb391de371e45712c89dae211bfac3c12f1d56b3",
+  "milestone2/scripts/odoo_prepare.py": "eb9abcdc828ada02b39bbe5fd835b6a83f80e82d74d3b887761ed8be23dfa338",
+  "milestone2/scripts/odoo_submit.py": "1c387c36a0ec0ecf3ceb5cf8689c266750f7c138bf3bff89733c27e1987a960a",
+  "milestone2/scripts/provision_demo.py": "7268c89305eb8a4f68ca11351082e09d0d84fe2b5ef7b050d01127dc01232cfa",
+  "milestone2/scripts/setup.py": "d6a63c09032fccaa9b9b0841c83695d6f7b3c75e9c56576ab86df069477e9765",
+  "milestone2/scripts/token_usage.py": "5c75ba8098465045deb6f0d8bdff536774dcc974c796b082eaa6e33d684329d4",
+  "milestone2/scripts/verify.py": "119db596637b502c6f153aa0eff9f7d807bc3c529788c6bebcc3fabf06581ae6",
+  "milestone2/scripts/verify_odoo.py": "524c733e398596d083a6cc21c0187e9474f833326c0ceba3d4123423ac72e007"
+}

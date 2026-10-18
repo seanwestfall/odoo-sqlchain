@@ -1,0 +1,26 @@
+# Merge with milestone0/compose.yaml; paths are relative to that first file.
+services:
+  transfer-boundary:
+    image: odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613
+    profiles: ["boundary"]
+    user: "0:0"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+    entrypoint: ["python3", "/app/service.py"]
+    volumes:
+      - ../chainsql/boundary:/app:ro
+      - ../.local/milestone2/signer.json:/run/boundary/signer.json:ro
+      - ../.local/milestone2/observer.json:/run/boundary/observer.json:ro
+    # No host port and no Odoo/policy credentials. Only the internal Docker network.
+  transfer-worker:
+    image: odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613
+    profiles: ["boundary-cli"]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    entrypoint: ["python3", "/app/worker.py"]
+    volumes:
+      - ../chainsql/boundary/worker.py:/app/worker.py:ro
+      - ../.local/milestone0/worker.json:/run/boundary/worker.json:ro

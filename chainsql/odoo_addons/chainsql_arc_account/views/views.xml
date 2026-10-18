@@ -1,0 +1,15 @@
+<odoo>
+ <record id="arc_operation_form" model="ir.ui.view">
+  <field name="name">chainsql.arc.operation</field><field name="model">chainsql.operation</field><field name="inherit_id" ref="chainsql_transfer_boundary.operation_boundary_form"/>
+  <field name="arch" type="xml">
+   <xpath expr="//field[@name='boundary_transfer_id']/../../div" position="replace"><div class="alert alert-info">Independent policy approval is required. Arc testnet uses real test tokens. A receipt does not automatically change accounting. Cancellation after signing requires reconciliation.</div></xpath>
+   <xpath expr="//notebook" position="inside"><page string="Arc accounting" invisible="network != 'eip155:5042002'">
+    <p>Test USDC maps 1:1 to demonstration USD. Gas is separate. Review the bill and journal configuration before recording. Outstanding clearing must be reviewed separately.</p>
+    <button name="action_record_arc_payment" type="object" string="Record and reconcile demonstration payment" groups="account.group_account_manager" invisible="arc_payment_id or boundary_state != 'observed'"/>
+    <group><field name="arc_payment_id"/><field name="arc_fee_move_id"/><field name="arc_accounting_state"/><field name="arc_fee_atomic"/><field name="arc_fee_rounding"/></group><field name="arc_accounting_mapping"/>
+   </page></xpath>
+  </field>
+ </record>
+ <record id="arc_journals_action" model="ir.actions.act_window"><field name="name">Arc demonstration journals</field><field name="res_model">chainsql.arc.journal</field><field name="view_mode">list,form</field></record>
+ <menuitem id="arc_journals_menu" name="Arc demonstration journals" action="arc_journals_action" groups="account.group_account_manager"/>
+</odoo>

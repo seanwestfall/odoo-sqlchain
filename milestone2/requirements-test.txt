@@ -1,0 +1,4 @@
+psycopg2-binary==2.9.10
+cryptography==41.0.7
+cffi==2.1.1
+pycparser==3.0

@@ -1,0 +1,1 @@
+<odoo><record id="arc_company_rule" model="ir.rule"><field name="name">Arc journals by company</field><field name="model_id" ref="model_chainsql_arc_journal"/><field name="domain_force">[('company_id','in',company_ids)]</field></record></odoo>

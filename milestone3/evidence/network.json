@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-09-15T19:40:24.633Z",
+  "rpc": "https://rpc.testnet.arc.network",
+  "chainId": 5042002,
+  "asset": "USDC",
+  "token": "0x3600000000000000000000000000000000000000",
+  "tokenDecimals": 6,
+  "nativeFeeDecimals": 18,
+  "finalizedBlockNumber": "62282731",
+  "finalizedBlockHash": "0x65cfefd6b0996dba69f86d8673904e8be2dfc376abe629f80042edead6a11427",
+  "transferPerformed": false
+}

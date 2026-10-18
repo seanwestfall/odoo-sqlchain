@@ -1,0 +1,137 @@
+<odoo>
+    <record id="wallet_list" model="ir.ui.view">
+        <field name="name">chainsql.wallet.list</field>
+        <field name="model">chainsql.wallet.approval</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="company_id" />
+                <field name="partner_id" />
+                <field name="recipient" />
+                <field name="network" />
+                <field name="version" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+    <record id="wallet_form" model="ir.ui.view">
+        <field name="name">chainsql.wallet.form</field>
+        <field name="model">chainsql.wallet.approval</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" string="Approve test wallet" type="object" groups="chainsql_base.group_approver" invisible="state == 'approved'" class="oe_highlight" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="alert alert-info" role="status">Local simulation only. Wallet authority is specific to this company and vendor. Editing invalidates approval.</div>
+                    <group>
+                        <field name="name" />
+                        <field name="company_id" />
+                        <field name="partner_id" />
+                        <field name="network" />
+                        <field name="recipient" />
+                        <field name="asset" />
+                        <field name="version" />
+                        <field name="approved_by" />
+                        <field name="approved_at" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="operation_list" model="ir.ui.view">
+        <field name="name">chainsql.operation.list</field>
+        <field name="model">chainsql.operation</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="bill_reference" />
+                <field name="company_id" />
+                <field name="revision" />
+                <field name="amount_atomic" />
+                <field name="asset" />
+                <field name="approval_outcome" />
+                <field name="approval_current" />
+                <field name="state" />
+                <field name="receipt_reference" />
+            </list>
+        </field>
+    </record>
+    <record id="operation_form" model="ir.ui.view">
+        <field name="name">chainsql.operation.form</field>
+        <field name="model">chainsql.operation</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <header>
+                    <button name="action_approve" string="Approve test request" type="object" groups="chainsql_base.group_approver" invisible="state != 'review'" class="oe_highlight" />
+                    <button name="action_queue" string="Queue test operation" type="object" invisible="state != 'approved' or not approval_current" class="oe_highlight" />
+                    <button name="action_sync" string="Refresh mock result" type="object" invisible="not operation_id" />
+                    <field name="state" widget="statusbar" statusbar_visible="review,approved,queued,observed" />
+                </header>
+                <sheet>
+                    <div class="alert alert-info" role="status">Simulation only: no payment, blockchain transaction, or accounting posting. Refresh after the worker observes the committed request.</div>
+                    <group>
+                        <group string="Immutable request">
+                            <field name="operation_id" />
+                            <field name="company_id" />
+                            <field name="bill_reference" />
+                            <field name="revision" />
+                            <field name="fingerprint" />
+                            <field name="wallet_id" />
+                            <field name="amount_atomic" />
+                            <div colspan="2" class="text-muted">Atomic units: 1 USDC = 1,000,000 (simulation)</div>
+                            <field name="asset" />
+                            <field name="recipient" />
+                            <field name="network" />
+                        </group>
+                        <group string="Review">
+                            <field name="recommendation" />
+                            <field name="explanation" />
+                            <field name="approval_outcome" />
+                            <field name="approval_current" />
+                            <field name="approved_by" />
+                            <field name="approved_at" />
+                            <field name="policy_version" />
+                            <field name="receipt_reference" />
+                            <field name="review_reason" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request snapshot">
+                            <field name="request" />
+                        </page>
+                        <page string="Observed result">
+                            <field name="result" />
+                            <field name="resource_purchases" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="wallet_action" model="ir.actions.act_window">
+        <field name="name">Company test wallets</field>
+        <field name="res_model">chainsql.wallet.approval</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="operation_action" model="ir.actions.act_window">
+        <field name="name">ChainSQL operations</field>
+        <field name="res_model">chainsql.operation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_chainsql" name="ChainSQL" sequence="90" groups="chainsql_base.group_operator" />
+    <menuitem id="menu_operations" name="Test operations" parent="menu_chainsql" action="operation_action" />
+    <menuitem id="menu_wallets" name="Company test wallets" parent="menu_chainsql" action="wallet_action" />
+    <record id="partner_form" model="ir.ui.view">
+        <field name="name">res.partner.chainsql</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="ChainSQL" groups="chainsql_base.group_operator">
+                    <field name="chainsql_wallet_ids" readonly="1" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

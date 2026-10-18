@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-09-14T10:39:27.330345+00:00",
+  "odoo_revision": "7bbce824a1897a912441a7f0511ffec505cbe1d5",
+  "odoo_branch": "19.0",
+  "odoo_origin": "git@github.com:odoo/odoo.git",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "architecture": "arm64",
+  "source_root": "/Users/sean/Projects/odoo",
+  "file_sha256": {
+    "requirements.txt": "f788198a2368e4f38e6a2bdaee2f35af096bcc23943b6c753a9f0192a2dda9f8",
+    "milestone0/compose.yaml": "f9db796858fda6dcd9317496f72c2d27300df35bceed3749ca02ddef68cd75d5",
+    "chainsql/extension/chainsql.control": "d3068f2cb7c7003cf58901f8c4c211f1018b86b80f41c5f299fe668d04896967",
+    "chainsql/extension/chainsql--0.1.0.sql": "f082be8c712e81731db0bbb05244a382cbfb817a9eda3fbfcdc00f35362fab03"
+  },
+  "native_postgres_bin": "/opt/homebrew/opt/postgresql@16/bin",
+  "odoo_url": "http://localhost:8070/odoo/vendor-bills",
+  "database": "chainsql_m0",
+  "native_port": 55432,
+  "original_demo_url": "http://localhost:8069",
+  "odoo_core_modified": false
+}

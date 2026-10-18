@@ -1,0 +1,18 @@
+{
+  "version": "19.0",
+  "odoo_package_paths": [
+    "/usr/lib/python3/dist-packages/odoo"
+  ],
+  "effective_addon_paths": [
+    "/usr/lib/python3/dist-packages/odoo/addons",
+    "/var/lib/odoo/addons/19.0",
+    "/mnt/extra-addons",
+    "/usr/lib/python3/dist-packages/addons"
+  ],
+  "configured_addons_path": [
+    "/mnt/extra-addons"
+  ],
+  "db_host": "host.docker.internal",
+  "db_port": 55432,
+  "db_user": "chainsql_odoo"
+}

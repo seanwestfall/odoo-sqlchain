@@ -1,0 +1,21 @@
+{
+  "scope": "Milestone 2 from its first user prompt, including resumed turns",
+  "start": "2026-09-15T04:13:23.804Z",
+  "measured_through": "2026-09-15T06:55:39.895Z",
+  "counter_delta": {
+    "input_tokens": 3642535,
+    "cached_input_tokens": 3120768,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 38554,
+    "reasoning_output_tokens": 12654,
+    "total_tokens": 3681089
+  },
+  "uncached_input_tokens": 521767,
+  "notes": [
+    "Input totals include repeated context across model calls.",
+    "Cached input is a subset of input, not additional tokens.",
+    "Reasoning output is reported as a subset of output; do not add it again.",
+    "Measurement excludes tool calls and final response after this cutoff.",
+    "These counters are not a credit or monetary-cost calculation."
+  ]
+}

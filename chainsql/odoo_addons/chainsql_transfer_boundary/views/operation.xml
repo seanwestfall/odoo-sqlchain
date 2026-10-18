@@ -1,0 +1,22 @@
+<odoo>
+    <record id="operation_boundary_form" model="ir.ui.view">
+        <field name="name">chainsql.operation.transfer.boundary</field>
+        <field name="model">chainsql.operation</field>
+        <field name="inherit_id" ref="chainsql_base.operation_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Transfer boundary">
+                    <div class="alert alert-info" role="status">Local settlement simulator only. Independent SQL policy approval is required. Value and fees are reserved before signing; cancellation after authorization requires reconciliation.</div>
+                    <button name="action_request_boundary_transfer" type="object" string="Request bounded test transfer" invisible="boundary_transfer_id or not approval_current" class="btn-primary"/>
+                    <button name="action_sync_boundary" type="object" string="Refresh transfer status" invisible="not boundary_transfer_id"/>
+                    <button name="action_cancel_boundary" type="object" string="Cancel / request reconciliation" invisible="not boundary_transfer_id or boundary_state in ('observed', 'cancelled')"/>
+                    <group>
+                        <field name="boundary_transfer_id"/>
+                        <field name="boundary_state"/>
+                    </group>
+                    <field name="boundary_status"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

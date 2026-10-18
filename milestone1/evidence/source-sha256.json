@@ -1,0 +1,20 @@
+{
+  "chainsql/odoo_addons/chainsql_account/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+  "chainsql/odoo_addons/chainsql_account/__manifest__.py": "2baf90a54e2bc7c65708f7080415acf81d435a5945b68125bf60ec3a2cd5dfa2",
+  "chainsql/odoo_addons/chainsql_account/models/__init__.py": "f7cdbd9e741d44db099991037ec1ad09042a3365b426e61aacfa6d60fdb32735",
+  "chainsql/odoo_addons/chainsql_account/models/account_move.py": "192c59a0655aeb43eb20d5370412bf0ffca6f0f084f0690ee98c426978e5520f",
+  "chainsql/odoo_addons/chainsql_account/views/views.xml": "d82c4239440a1b1951200183e46d446cce54386aeed3793875a2abbfa406a0c1",
+  "chainsql/odoo_addons/chainsql_base/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+  "chainsql/odoo_addons/chainsql_base/__manifest__.py": "c223f35fdca6ad318fcb6082bcd942eec5a0a0b41f906d3a163bc528cb3f07ee",
+  "chainsql/odoo_addons/chainsql_base/models/__init__.py": "39ece7146ba6527cfe9c3bb1025228416017f1ebba0396ff482349b439f4358a",
+  "chainsql/odoo_addons/chainsql_base/models/operation.py": "f6ea569429e742bccc50cd81c92d3c7702eb49af9f6476a0bdccab48e2784c68",
+  "chainsql/odoo_addons/chainsql_base/models/wallet.py": "c294e58f8898928de3dcf0f5cd37a93864e0e7545cee651e8b3eb9f2ad72b31c",
+  "chainsql/odoo_addons/chainsql_base/security/ir.model.access.csv": "e09801211ac86e6ff24dbe4f3640dc6f1934255a482b0b3ac8a9f1ed37e99455",
+  "chainsql/odoo_addons/chainsql_base/security/security.xml": "9177073d115036445e28f12f875394c47530cb1e1a17b215b31ba078f3a762ea",
+  "chainsql/odoo_addons/chainsql_base/views/views.xml": "d917a62f74bf01c5a1f863aac09d2099615fc211d14aa840df4f3ab3ca160dd0",
+  "milestone1/scripts/configure.py": "e69d4c90d737a33fb7cda8a5107de069ae27e16bfbd4e40445d77b40c75d9a3c",
+  "milestone1/scripts/mock_worker.py": "5b075f5edefcfae02e68c10101b49688d2dc1053a3ab742cefa527f3c82c883c",
+  "milestone1/scripts/seed_demo.py": "00c9863c436c914b6470feca335def825a37bd0efeb0fdf32c363794937de48a",
+  "milestone1/scripts/verify.py": "9a1245bd11f7705f188d9bd12a96458d6c52dd576af518e289ec8fda8c4488eb",
+  "milestone1/scripts/verify_odoo.py": "25cbaf3d0c518b349ab3fcb24d55615ccc4d9bdce62c90793e533f55108541e6"
+}

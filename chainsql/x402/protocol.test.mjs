@@ -1,0 +1,20 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {encodePaymentRequiredHeader} from '@x402/core/http';
+import {privateKeyToAccount} from 'viem/accounts';
+import {validateChallenge,validateRequest,requirement,payload,typed,resourceHTTP,TOKEN} from './protocol.mjs';
+import {validate} from './adapter.mjs';
+const s={network:'eip155:84532',interface:'x402-eip3009-6',fee_ceiling_atomic:'0',amount_atomic:'10000',destination:'0x'+'22'.repeat(20),valid_from:new Date(Date.now()-1000).toISOString(),valid_until:new Date(Date.now()+1800000).toISOString()};
+const r={url:'http://127.0.0.1:8094/vendor-verification/1?version=1',method:'GET',body:'',scheme:'exact',asset:TOKEN,domain_name:'USDC',domain_version:'2',resource_version:'1',resource_key:'demo-vendor-verification'};
+const challenge=()=>({x402Version:2,resource:{url:r.url,mimeType:'application/json'},accepts:[requirement(s)],extensions:{chainsql:{resourceVersion:'1'}}});
+const response=c=>({status:402,headers:{'payment-required':encodePaymentRequiredHeader(c)}});
+test('SDK v2 challenge accepted exactly',()=>validateChallenge(s,r,response(challenge())));
+for(const [field,value] of [['amount','10001'],['payTo','0x'+'33'.repeat(20)],['network','eip155:5042002'],['asset','0x'+'44'.repeat(20)],['scheme','upto'],['maxTimeoutSeconds',7200],['extra',{name:'USD Coin',version:'2'}]])test('reject changed '+field,()=>{const c=challenge();c.accepts[0][field]=value;assert.throws(()=>validateChallenge(s,r,response(c)));});
+for(const [field,value] of [['url','http://localhost:8094/vendor-verification/1?version=1'],['url','http://127.0.0.1:8094@evil.example/vendor-verification/1?version=1'],['method','POST'],['body','changed'],['resource_version','2'],['domain_version','1']])test('egress/request restriction '+field+' '+value,()=>assert.throws(()=>validateRequest(s,{...r,[field]:value})));
+test('changed resource URL rejected',()=>{const c=challenge();c.resource.url+='x';assert.throws(()=>validateChallenge(s,r,response(c)));});
+test('changed version rejected',()=>{const c=challenge();c.extensions.chainsql.resourceVersion='2';assert.throws(()=>validateChallenge(s,r,response(c)));});
+test('actual EIP712 signature validates and deterministic nonce binds request fingerprint',async()=>{
+ const acct=privateKeyToAccount('0x'+'11'.repeat(32)),fp='a'.repeat(64);
+ const sig=await acct.signTypedData(typed(s,acct.address,fp));const p=payload(s,r,acct.address,fp,sig);
+ await validate(s,r,fp,p);await assert.rejects(validate(s,r,'b'.repeat(64),p));await assert.rejects(validate({...s,amount_atomic:'10001'},r,fp,p));
+ assert.equal(p.payload.authorization.nonce,'0x'+fp);
+});

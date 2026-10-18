@@ -1,0 +1,64 @@
+{
+  "purchase_id": "13ea545c-3929-43de-ac5f-04547de22b36",
+  "observation": {
+    "transaction": "0x637aceb0e03362067e8d55f56d3823a56f17cae6b66017672d0d9b95b7559dd4",
+    "network": "eip155:84532",
+    "amount": "10000",
+    "recipient": "0x176c176a4a14a89741337a438ddead22a4f6fd05",
+    "authorization_nonce": "0x4a6499153bd313dc347c75e6ff6a4e46f0d92def978bda9c9046e9a25b1681da",
+    "receipt_status": "success",
+    "blockNumber": "48283564",
+    "blockHash": "0x43cffaa2d63a1b05b2f72b663376fae7201ac2e20be3168353f20de3f1224e00",
+    "finalizedBlock": "48282964",
+    "finality": "L2 receipt with 2 successor blocks; not L1-finalized",
+    "observedAt": "2026-10-18T14:58:00.792Z",
+    "payerFeeAtomic": "0",
+    "feeHandling": "facilitator pays Base Sepolia native ETH gas",
+    "fingerprint": "4a6499153bd313dc347c75e6ff6a4e46f0d92def978bda9c9046e9a25b1681da",
+    "payment_state": "confirmed",
+    "delivery_state": "delivered",
+    "request_http_status": 402,
+    "demonstration": true
+  },
+  "odoo": {
+    "operation_id": 1,
+    "bill_id": 57,
+    "bill_reference": "BILL/2026/09/0002",
+    "purchase_record_id": 6,
+    "payment_state": "confirmed",
+    "delivery_state": "delivered",
+    "bill_payment_state": "not_paid",
+    "bill_residual": 30.0,
+    "payment_reference": "0x637aceb0e03362067e8d55f56d3823a56f17cae6b66017672d0d9b95b7559dd4",
+    "resource_result": {
+      "checks": {
+        "registry": "not_queried",
+        "sanctions": "not_queried",
+        "paymentInstructions": "requires_human_review"
+      },
+      "provider": "ChainSQL demo merchant",
+      "vendorId": "11",
+      "explanation": "Demonstrates buying a vendor-verification response. This is not independent vendor due diligence.",
+      "verification": "synthetic_fixture_only",
+      "demonstration": true,
+      "resourceVersion": "1"
+    }
+  },
+  "replay_same_transaction": true,
+  "authorization_digest_unchanged": true,
+  "authorization_digest": "ce0441590fed34b4fadb21e9ed350dcacfa3b5b3c2158f57d14468a7920d8162",
+  "request": {
+    "url": "http://127.0.0.1:8094/vendor-verification/11?version=1",
+    "body": "",
+    "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+    "method": "GET",
+    "scheme": "exact",
+    "domain_name": "USDC",
+    "operation_id": "1",
+    "resource_key": "demo-vendor-verification",
+    "domain_version": "2",
+    "resource_version": "1",
+    "operation_fingerprint": "5a9b6ae96718a8709c0667390f0c5e370044d380081934be21df18c2ff18edb6"
+  },
+  "independent_merchant": false
+}

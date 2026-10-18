@@ -1,0 +1,1 @@
+<odoo><record id="resource_company" model="ir.rule"><field name="name">Resource purchases by allowed company</field><field name="model_id" ref="model_chainsql_resource_purchase"/><field name="domain_force">[('company_id','in',company_ids)]</field></record></odoo>

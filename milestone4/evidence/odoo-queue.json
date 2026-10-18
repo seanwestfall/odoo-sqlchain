@@ -1,0 +1,14 @@
+{
+  "purchase_id": "13ea545c-3929-43de-ac5f-04547de22b36",
+  "odoo_purchase_id": 6,
+  "operation_id": 1,
+  "bill_id": 57,
+  "checks": [
+    "rolled-back Odoo queue leaves no resource link",
+    "double click returns the same resource purchase",
+    "ordinary create/write cannot forge resource evidence",
+    "other company cannot inspect purchase",
+    "other company cannot synchronize purchase",
+    "material bill edit revokes resource approval"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "verified_at": "2026-09-15T06:50:38.804110+00:00",
+  "database": "chainsql_m2_odoo_8fa7b41e4d",
+  "checks": [
+    "Odoo rollback removes transfer request",
+    "Odoo repeat submission returns same transfer",
+    "other company cannot submit, inspect or cancel boundary transfer",
+    "stored balance recomputation invalidates SQL approval",
+    "recipient edit invalidates SQL approval",
+    "committed recipient edit revokes independently issued approval",
+    "restricted signer refuses the authorization after an Odoo recipient edit",
+    "invalidated signed request retains reservation and creates no settlement"
+  ],
+  "checks_passed": 8
+}

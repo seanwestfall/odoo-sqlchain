@@ -1,0 +1,61 @@
+{
+  "observed_at": "2026-09-16T02:32:06.348939+00:00",
+  "op_id": 2,
+  "bill_id": 58,
+  "bill_reference": "BILL/2026/09/0003",
+  "tenant": "odoo:chainsql_m0:1:arc",
+  "business_reference": "account.move:58",
+  "request_revision": "1",
+  "destination": "0x176c176a4a14a89741337a438ddead22a4f6fd05",
+  "amount_atomic": "10000",
+  "source_wallet": "9315ae3a-d39c-50ea-8892-db0179dc2df6",
+  "transfer_id": "7a479e94-267e-4546-bc55-dc068a921d87",
+  "receipt": {
+    "state": "confirmed",
+    "chainId": 5042002,
+    "network": "eip155:5042002",
+    "token": "0x3600000000000000000000000000000000000000",
+    "asset": "USDC",
+    "amountAtomic": "10000",
+    "amountDecimals": 6,
+    "feeAtomic": "1552698000000000",
+    "feeDecimals": 18,
+    "txHash": "0x7adc94c6ab6c12530d0f77a34176abe3856785bc3831583b682e8122aaab1559",
+    "receiptStatus": "success",
+    "blockNumber": "62331434",
+    "blockHash": "0xa7523e69afe0947bd43bb94f35d4e75652c8733444c7df59188290903a303776",
+    "finalizedBlockNumber": "62331434",
+    "finalizedBlockHash": "0xa7523e69afe0947bd43bb94f35d4e75652c8733444c7df59188290903a303776",
+    "finality": "canonical receipt at or below RPC finalized block; Arc deterministic finality",
+    "observedAt": "2026-09-16T02:32:02.634Z",
+    "matchingTransferLogs": 1,
+    "providerRequestId": "cf093c94-e6fa-42cb-a2f0-cca33065e7fa"
+  },
+  "replay": {
+    "state": "receipt_available",
+    "txHash": "0x7adc94c6ab6c12530d0f77a34176abe3856785bc3831583b682e8122aaab1559"
+  },
+  "submission_response_discarded": true,
+  "recovered_with_new_controller": true,
+  "odoo": {
+    "before_accounting": {
+      "payment_id": false,
+      "bill_balance": 0.01,
+      "bill_state": "not_paid"
+    },
+    "payment_id": 1,
+    "bill_state": "in_payment",
+    "fee_move_id": false,
+    "accounting_mapping": {
+      "mapping": "1 test USDC = 1 demonstration USD; no FX",
+      "receipt": "0x7adc94c6ab6c12530d0f77a34176abe3856785bc3831583b682e8122aaab1559",
+      "version": "arc-test-usd-v1",
+      "method_id": 6,
+      "journal_id": 13,
+      "fee_expense_id": 160,
+      "fee_clearing_id": 159,
+      "outstanding_account_id": 158
+    }
+  },
+  "execution_disabled_after_acceptance": true
+}

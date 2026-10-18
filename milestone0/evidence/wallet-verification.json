@@ -1,0 +1,10 @@
+{
+  "recorded_at_utc": "2026-09-14T10:44:30.149383+00:00",
+  "command": "npm --prefix milestone0/wallet test",
+  "passed": 8,
+  "failed": 0,
+  "scope": "Synthetic receipt validation fixtures and integer-unit checks; no Circle call or live transfer",
+  "missing_credentials_guard": "node transfer.mjs exited 2 before any network/signing operation",
+  "test_file_sha256": "0b2eec4d7a8cd670c4a1e356562e5d7ac2b4880d2c35f4055ea2e55c7d21eeb1",
+  "setup_guard": "npm run setup exited 2 with TEST_CLIENT_KEY credential, before network requests or secret generation"
+}

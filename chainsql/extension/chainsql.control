@@ -1,0 +1,6 @@
+comment = 'ChainSQL transactional integration queue: milestone-0 probe baseline'
+default_version = '0.1.0'
+relocatable = false
+schema = 'chainsql'
+superuser = false
+trusted = false

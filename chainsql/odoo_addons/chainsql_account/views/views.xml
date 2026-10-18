@@ -1,0 +1,21 @@
+<odoo>
+    <record id="bill_form" model="ir.ui.view">
+        <field name="name">account.move.chainsql</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="ChainSQL" groups="chainsql_base.group_operator" invisible="move_type != 'in_invoice'">
+                    <div class="alert alert-info" role="status">Prepare an immutable request, approve it, then queue a local simulation. Amounts use 6 decimal atomic units. No funds move.</div>
+                    <group>
+                        <field name="chainsql_wallet_id" readonly="not user_can_approve_chainsql" options="{'no_create': True}" />
+                        <field name="user_can_approve_chainsql" invisible="1" />
+                    </group>
+                    <button name="action_chainsql_prepare" type="object" string="Prepare test request" class="btn-primary" invisible="state != 'posted'" />
+                    <button name="action_chainsql_queue" type="object" string="Queue test operation" invisible="state != 'posted'" />
+                    <field name="chainsql_operation_ids" readonly="1" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

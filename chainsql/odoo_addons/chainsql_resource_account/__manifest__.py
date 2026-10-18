@@ -1,0 +1,1 @@
+{'name':'ChainSQL x402 resource purchases','version':'19.0.0.4.0','depends':['chainsql_transfer_boundary'],'license':'LGPL-3','data':['security/ir.model.access.csv','security/rules.xml','views/purchase.xml'],'post_init_hook':'post_init_hook','installable':True}

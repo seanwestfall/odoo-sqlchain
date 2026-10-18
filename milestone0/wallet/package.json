@@ -1,0 +1,16 @@
+{
+  "name": "chainsql-milestone0-compatibility",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "probe": "node probe.mjs",
+    "test": "node --test test.mjs",
+    "setup": "node --env-file=../../.local/milestone0/circle.env setup.mjs",
+    "transfer": "node --env-file=../../.local/milestone0/circle.env transfer.mjs"
+  },
+  "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "10.8.0",
+    "viem": "2.56.5"
+  }
+}

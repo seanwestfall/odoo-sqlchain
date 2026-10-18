@@ -1,0 +1,25 @@
+✔ SDK v2 challenge accepted exactly (2.003709ms)
+✔ reject changed amount (0.952292ms)
+✔ reject changed payTo (0.27925ms)
+✔ reject changed network (0.231875ms)
+✔ reject changed asset (0.192625ms)
+✔ reject changed scheme (0.181208ms)
+✔ reject changed maxTimeoutSeconds (0.169ms)
+✔ reject changed extra (0.169583ms)
+✔ egress/request restriction url http://localhost:8094/vendor-verification/1?version=1 (0.137417ms)
+✔ egress/request restriction url http://127.0.0.1:8094@evil.example/vendor-verification/1?version=1 (0.129416ms)
+✔ egress/request restriction method POST (0.111042ms)
+✔ egress/request restriction body changed (0.082334ms)
+✔ egress/request restriction resource_version 2 (0.056917ms)
+✔ egress/request restriction domain_version 1 (0.051959ms)
+✔ changed resource URL rejected (0.211084ms)
+✔ changed version rejected (0.169667ms)
+✔ actual EIP712 signature validates and deterministic nonce binds request fingerprint (24.353667ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 321.255709

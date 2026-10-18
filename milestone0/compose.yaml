@@ -1,0 +1,23 @@
+name: chainsql-m0
+services:
+  odoo:
+    image: odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613
+    ports:
+      - "127.0.0.1:8070:8069"
+    volumes:
+      - ../vendor/odoo/odoo:/usr/lib/python3/dist-packages/odoo:ro
+      - ../vendor/odoo/addons:/mnt/extra-addons:ro
+      - ../chainsql/odoo_addons:/mnt/chainsql-addons:ro
+      - ../.local/milestone0/odoo.conf:/etc/odoo/odoo.conf:ro
+      - odoo-data:/var/lib/odoo
+    command: ["odoo"]
+  mock-worker:
+    image: odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613
+    profiles: ["mock"]
+    restart: unless-stopped
+    entrypoint: ["python3", "/app/mock_worker.py"]
+    volumes:
+      - ../milestone1/scripts/mock_worker.py:/app/mock_worker.py:ro
+      - ../.local/milestone0/worker.json:/run/chainsql/worker.json:ro
+volumes:
+  odoo-data:

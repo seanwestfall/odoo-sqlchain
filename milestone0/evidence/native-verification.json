@@ -1,0 +1,36 @@
+{
+  "observed_at_utc": "2026-09-14T10:33:58.392406+00:00",
+  "checks": [
+    "dedicated extension owner",
+    "application and worker roles are non-superuser and cannot create databases or roles",
+    "application and worker cannot bypass their separate SQL APIs",
+    "rollback leaves no operation",
+    "concurrent duplicate enqueue returns one operation",
+    "idempotency key rejects changed payload",
+    "invalid payload rejected",
+    "concurrent workers claim each committed operation once",
+    "empty queue returns no work",
+    "incorrect claim token rejected",
+    "worker completion is visible to requesting application",
+    "completion cannot be overwritten by replay",
+    "native pg_dump/pg_restore preserves all extension runtime rows exactly",
+    "restore preserves dedicated extension ownership",
+    "restored role boundaries still enforce permissions",
+    "restored pending work is claimable",
+    "worker cannot read Odoo accounting records",
+    "account installed; Purchase, Inventory and Manufacturing deferred"
+  ],
+  "postgres_version": "PostgreSQL 16.15 (Homebrew) on aarch64-apple-darwin25.6.0, compiled by Apple clang version 21.0.0 (clang-2100.1.1.101), 64-bit",
+  "database": "chainsql_verify_2dba78bd449c",
+  "restored_database": "chainsql_restore_2dba78bd449c",
+  "runtime_rows": 7,
+  "runtime_rows_sha256": "030873a7ca4f09cb0a00ba2f169cc89a61b476f8d24002537290bdd4f4a6c603",
+  "backup_sha256": "558ebcb2a3012148411914bd31a94d217a8cf5dbd28c9165418dfe8e84d21965",
+  "odoo_modules": {
+    "mrp": "uninstalled",
+    "stock": "uninstalled",
+    "account": "installed",
+    "purchase": "uninstalled"
+  },
+  "scope": "Native extension runtime restore and permissions; excludes Odoo filestore and Circle secrets."
+}

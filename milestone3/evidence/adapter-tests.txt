@@ -1,0 +1,21 @@
+✔ missing Circle server credentials fail closed (0.720292ms)
+✔ 6 decimal transfer and 18 decimal fee preparation (1.26475ms)
+✔ wrong chain rejected (0.140208ms)
+✔ native Arc wallet is not silently substituted for documented signing wallet (0.108125ms)
+✔ insufficient balance rejected before signing (0.138417ms)
+✔ fee ceiling rejected before signing (0.164916ms)
+✔ signed nonce, sender and recipient are checked (8.848792ms)
+✔ lost response recovers by original hash without another signature or payment (15.595083ms)
+✔ replay finds the original receipt and does not broadcast (4.263334ms)
+✔ pending receipt is uncertain, never treated as failed or paid (4.284167ms)
+✔ reverted receipt reports gas without claiming payment (4.294167ms)
+✔ receipt below finality threshold remains confirming (4.302ms)
+✔ unavailable provider does not authorize replacement signing (4.730792ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 360.342583

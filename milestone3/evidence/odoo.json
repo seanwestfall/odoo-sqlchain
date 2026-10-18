@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "confirmed receipt does not create payment or change bill balance",
+    "accounting requires explicit journal configuration",
+    "edited recipient blocks automatic accounting",
+    "ORM payment linked to operation",
+    "payment remains outstanding, not paid",
+    "bill stays In Payment until clearing",
+    "explicit action reconciles bill payable",
+    "gas posted separately from vendor payment",
+    "exact gas units retained",
+    "fee rounding remainder explicit",
+    "repeat accounting action links same payment",
+    "mapping snapshot retained"
+  ],
+  "bill_payment_state": "in_payment",
+  "payment_id": 1,
+  "database": "chainsql_m3_odoo_5921aaa27d",
+  "verified_at": "2026-09-15T19:38:30.148563+00:00",
+  "receipt_source": "synthetic fixture; no network transfer"
+}

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+wallet_operator,wallet operator,model_chainsql_wallet_approval,group_operator,1,0,0,0
+wallet_approver,wallet approver,model_chainsql_wallet_approval,group_approver,1,1,1,0
+operation_operator,operation operator,model_chainsql_operation,group_operator,1,1,1,0
