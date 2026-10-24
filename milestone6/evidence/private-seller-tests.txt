@@ -1,0 +1,30 @@
+test_402_is_v2 (__main__.PrivateSeller.test_402_is_v2) ... ok
+test_actual_http_auth_challenge_and_replay (__main__.PrivateSeller.test_actual_http_auth_challenge_and_replay) ... ok
+test_authentication_is_not_a_grant (__main__.PrivateSeller.test_authentication_is_not_a_grant) ... ok
+test_authorization_encrypted (__main__.PrivateSeller.test_authorization_encrypted) ... ok
+test_changed_signature_not_replayed (__main__.PrivateSeller.test_changed_signature_not_replayed) ... ok
+test_delivery_and_replay (__main__.PrivateSeller.test_delivery_and_replay) ... ok
+test_encrypted_at_rest (__main__.PrivateSeller.test_encrypted_at_rest) ... ok
+test_exact_bytes (__main__.PrivateSeller.test_exact_bytes) ... ok
+test_expired_prepared_authorization_is_not_dispatched (__main__.PrivateSeller.test_expired_prepared_authorization_is_not_dispatched) ... ok
+test_lost_paid_response_survives_restart (__main__.PrivateSeller.test_lost_paid_response_survives_restart) ... ok
+test_nonce_cannot_buy_second_version (__main__.PrivateSeller.test_nonce_cannot_buy_second_version) ... ok
+test_observer_outage_stays_pending (__main__.PrivateSeller.test_observer_outage_stays_pending) ... ok
+test_one_dispatch_claim_across_connections (__main__.PrivateSeller.test_one_dispatch_claim_across_connections) ... ok
+test_pending_prevents_purge (__main__.PrivateSeller.test_pending_prevents_purge) ... ok
+test_price_change_blocked (__main__.PrivateSeller.test_price_change_blocked) ... ok
+test_recipient_change_blocked (__main__.PrivateSeller.test_recipient_change_blocked) ... ok
+test_retention_enforced (__main__.PrivateSeller.test_retention_enforced) ... ok
+test_revocation_blocks_paid_replay (__main__.PrivateSeller.test_revocation_blocks_paid_replay) ... ok
+test_salt_hides_predictable_commitment (__main__.PrivateSeller.test_salt_hides_predictable_commitment) ... ok
+test_unapproved_version_rejected (__main__.PrivateSeller.test_unapproved_version_rejected) ... ok
+test_unauthorized_cannot_pay_for_access (__main__.PrivateSeller.test_unauthorized_cannot_pay_for_access) ... ok
+test_uncertain_never_resettles (__main__.PrivateSeller.test_uncertain_never_resettles) ... ok
+test_version_pinned_after_edit (__main__.PrivateSeller.test_version_pinned_after_edit) ... ok
+test_wrong_identity_aad (__main__.PrivateSeller.test_wrong_identity_aad) ... ok
+test_wrong_wallet_rejected (__main__.PrivateSeller.test_wrong_wallet_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.231s
+
+OK

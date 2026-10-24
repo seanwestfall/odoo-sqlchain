@@ -1,6 +1,6 @@
 # ChainSQL
 
-PostgreSQL command boundary, Odoo addons, restricted payment workers, and testnet integration evidence. Milestones 0–4 are included. Odoo is an upstream Git submodule, pinned to the revision used by the development pilot.
+PostgreSQL command boundary, Odoo addons, restricted payment workers, and testnet integration evidence. Milestones 0–4, sample purchasing and document integrations, and milestone-7 release-candidate tooling are included. Odoo is an upstream Git submodule, pinned to the revision used by the development pilot.
 
 ## Clone
 
@@ -38,13 +38,16 @@ The original development instance remains in `/Users/sean/Projects/odoo`. Do not
 
 This repository has fresh ChainSQL history and includes the milestone 4 work that was uncommitted in the original Odoo checkout. Original project commit: `0eb3d31d9420`. The original checkout and Git history are retained unchanged.
 
-The migration is staged. Commit with your configured signing key, then publish the parent repository:
-
-```sh
-git commit -m "Initialize ChainSQL with pinned Odoo submodule"
-git push -u origin main
-```
-
-The parent push does not upload Odoo's objects. If the destination already has an unrelated `main` branch, inspect it first or push a new branch; do not force-push over existing work. This migration does not publish anything automatically.
+The standalone parent repository is published on `main`. Odoo remains a pinned submodule, so pushing ChainSQL changes does not upload Odoo’s source history.
 
 Upstream Odoo retains its own license in `vendor/odoo`. This migration does not change licensing or assign a new license to ChainSQL.
+
+See [milestone 5](milestone5/README.md) for the isolated purchasing/decision demo on port 8071, its agent access boundary, and sample validation evidence.
+
+## Private document proofs and seller
+
+[Milestone 6 setup and evidence](milestone6/README.md) covers encrypted Odoo snapshots, immutable private resource versions, authenticated x402 replay, and the optional Arc commitment CLI. The local sample is on port 8072. Live M6 settlement/publication is explicitly unverified.
+
+## Release candidate and pilot validation
+
+[Milestone 7](milestone7/README.md) provides a fresh paused installation on port 8073, hash-locked dependencies, native SQL/addon upgrades, restore drills, metrics, and a source-package builder. Follow the [reviewer walkthrough](milestone7/WALKTHROUGH.md). Independent installation and a real-business pilot remain outstanding; see the [pilot register](milestone7/PILOT.md).

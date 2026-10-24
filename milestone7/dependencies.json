@@ -1,0 +1,13 @@
+{
+  "odoo_commit": "7bbce824a1897a912441a7f0511ffec505cbe1d5",
+  "odoo_image": "odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613",
+  "python_tested": "3.12.0",
+  "node_tested": "v24.19.0",
+  "native_postgresql": "postgres (PostgreSQL) 16.15 (Homebrew)",
+  "extension": "0.4.0",
+  "locks": {
+    "chainsql/x402/package-lock.json": "93955edd67cda0061f6b2c3af9d6d2bbfd37827ae7dfdb151c55b9275470886a",
+    "milestone0/wallet/package-lock.json": "402e45fbc372e7a2beaf634c3657a6e8846d1c60445109fc1922a5e3d223e5e4",
+    "milestone7/requirements-macos-arm64.lock": "0a846b4d809e5546fb834c151e7d5eddc1e2a843cdcfe7828e70eb6b74bb2be0"
+  }
+}

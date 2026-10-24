@@ -1,0 +1,24 @@
+PASS Identical enqueue returns same obligation
+PASS Changed request rejected
+PASS Worker cannot read encrypted authorizations
+PASS Worker cannot change budget
+PASS Concurrent requests cannot exceed budget
+PASS Exhausted budget denies signing claim
+PASS Authorization persistence failure closes dispatch
+PASS No HTTP payment after failed save
+PASS Retry reuses journal authorization without resigning
+PASS Payment and resource states independently observed
+PASS Reconciliation neither signs nor transmits
+PASS Authorization digest unchanged
+PASS Lost response and unavailable observer retain reservation
+PASS Lost response recovered with original authorization
+PASS Public status excludes authorization bytes
+PASS Pause blocks signing
+PASS Revoked approval blocks signing
+PASS Unsigned cancellation releases reservation
+PASS Missing transaction cannot confirm payment
+PASS Cancellation after dispatch requires reconciliation
+PASS No simulator release of x402 budget
+PASS Stale fence cannot save independent authorization
+PASS Even accidental approval UPDATE is rejected
+Native checks: 23

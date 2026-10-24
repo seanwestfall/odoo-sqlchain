@@ -1,0 +1,8 @@
+{
+  "deployment_class": "prototype-testnet",
+  "execution_default": "paused",
+  "arc_enabled_default": false,
+  "arc": {"chain_id": 5042002, "rpc": "https://rpc.testnet.arc.io", "asset": "USDC", "interface": "ERC-20", "token": "0x3600000000000000000000000000000000000000", "amount_decimals": 6, "native_fee_decimals": 18},
+  "x402": {"network": "eip155:84532", "scheme": "exact", "version": 2, "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e", "amount_decimals": 6, "facilitator": "https://www.x402.org/facilitator"},
+  "note": "Deployment reference, not an override of adapter allowlists. Arc and x402 are separate paths. No mainnet support or real revenue claim."
+}

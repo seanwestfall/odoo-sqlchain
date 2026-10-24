@@ -1,0 +1,13 @@
+# Reviewer walkthrough — prototype / testnet
+
+Allow 10–15 minutes. No new payment is needed. The installed sample environment is `http://localhost:8072`, local demo login `admin` / `admin`. Do not expose this login publicly. The separate fresh-install environment is `http://localhost:8073`, with a generated password in `.local/release/credentials.json`.
+
+1. Open `/odoo/vendor-bills/70` on port 8072. This bill is labeled **M5 SAMPLE**, not a real supplier invoice. It deliberately includes a malicious instruction as a test fixture. That text is evidence to inspect, not an instruction to follow.
+2. Open **ChainSQL**, then the linked operation. Inspect its company, approved destination, amount, policy decision and purchasing evidence. A mock result is labeled as simulation. Do not click Pay or queue another payment to review existing evidence.
+3. Open **Document proofs** on the bill. Open the approved snapshot (the record with an approval identity, not the purged fixture). Select **Verify source**. The source was intentionally edited after snapshotting: the warning is expected. The immutable original remains available only through the approver export method.
+4. Read `milestone6/evidence/odoo-acceptance.json` for checks that another company cannot inspect/approve/export and an operator cannot export ciphertext. Review `milestone6/evidence/demo-checks.json`: the live local endpoint returns HTTP 402 only to a granted buyer. Unauthorized payment attempts do not create access.
+5. Review historical `milestone3/evidence/live.json` and `milestone4/evidence/live.json`. These document distinct Arc vendor-payment and Base Sepolia resource-payment testnet paths. They do not prove M6 seller settlement or live Arc document publication. Do not recreate those completed obligations.
+6. Review `milestone7/evidence/restore.json`, `native-m3.json`, `native-m4.json` and `process-recovery.txt`. The full restore kept Odoo attachment bytes and pending probe state; native tests separately restored encrypted payment authorizations/nonce state. The killed seller process left its attempt uncertain and could not dispatch it again. These recovery providers are synthetic.
+7. Inspect `metrics-synthetic-load.json`. Amount and fee units remain separate. Uncertain attempts and reserved amounts remain visible; testnet amounts and simulated results are not revenue. The duplicate counter is a recorded native-test event, not an invented customer statistic.
+
+Expected conclusion: the local integration and release-recovery checks are reviewable. Independent installation and a genuine business-user pilot remain open. Any failed step should be recorded with the URL, time and sanitized error; never attach `.local` files or signing material to an issue.

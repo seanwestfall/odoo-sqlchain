@@ -1,0 +1,27 @@
+✔ exact-byte proof and changed bytes (0.508542ms)
+✔ salt is not in the public commitment payload (0.060083ms)
+✔ approved raw transaction is bound to exact commitment and zero value (4.544292ms)
+✔ reject changed recipient (3.036334ms)
+✔ reject changed value (2.344833ms)
+✔ reject changed data (2.209542ms)
+✔ reject changed nonce (2.40925ms)
+✔ reject changed chain (0.724333ms)
+✔ reject changed fee (4.316417ms)
+✔ independent verifier reads canonical finalized chain record (0.253875ms)
+✔ independent verifier rejects changed chain data (0.134166ms)
+✔ independent verifier rejects unfinalized receipt (0.099709ms)
+✔ persist before transmission; timeout recovers original hash (12.268708ms)
+✔ SDK v2 types and real EIP-712 authorization accepted (208.59575ms)
+✔ wrong buyer identity rejected (167.800583ms)
+✔ changed resource rejected (170.353459ms)
+✔ changed amount rejected (165.159375ms)
+✔ changed signing domain rejected (191.836042ms)
+✔ grant shorter than authorization rejected (308.629791ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1353.958542

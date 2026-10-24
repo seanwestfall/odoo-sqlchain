@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Native PostgreSQL integration/security tests. All mutations target unique test databases."""
 import concurrent.futures
@@ -13,15 +14,15 @@ import uuid
 import psycopg2
 from psycopg2.extras import Json
 
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[2];RUNTIME=Path(os.environ.get('CHAINSQL_RUNTIME_ROOT',str(ROOT)));PORT=int(os.environ.get('CHAINSQL_PG_PORT','55432'))
 sys.path.insert(0,str(ROOT/'chainsql/boundary'))
 from signer import RestrictedSigner, reconcile
-PG=Path('/opt/homebrew/opt/postgresql@16/bin')
+PG=Path(os.environ.get('PG_BIN','/opt/homebrew/opt/postgresql@16/bin'))
 DB='chainsql_m3_verify_'+uuid.uuid4().hex[:10]
-ADMIN=dict(host=str(ROOT/'.local/milestone0/socket'),port=55432,user='m0_admin',dbname=DB)
-creds0=json.loads((ROOT/'.local/milestone0/credentials.json').read_text())
-creds2=json.loads((ROOT/'.local/milestone2/credentials.json').read_text())
-roles={name:dict(host='127.0.0.1',port=55432,dbname=DB,user='chainsql_'+name,
+ADMIN=dict(host=str(RUNTIME/'.local/milestone0/socket'),port=PORT,user='m0_admin',dbname=DB)
+creds0=json.loads((RUNTIME/'.local/milestone0/credentials.json').read_text())
+creds2=json.loads((RUNTIME/'.local/milestone2/credentials.json').read_text())
+roles={name:dict(host='127.0.0.1',port=PORT,dbname=DB,user='chainsql_'+name,
       password=(creds0 if name in ('odoo','worker') else creds2)[name]) for name in ['odoo','worker','signer','observer']}
 checks=[]
 def call(query,params=(),role='admin',db=None):
@@ -50,7 +51,7 @@ def create_db(db):
         with conn.cursor() as cur:cur.execute('CREATE DATABASE '+db+' OWNER chainsql_odoo TEMPLATE template0')
     base=(ROOT/'milestone0/scripts/install_extension.sql').read_text()
     install=(ROOT/'milestone2/scripts/install.sql').read_text()
-    subprocess.run([str(PG/'psql'),'-Xq','-v','ON_ERROR_STOP=1','-h',ADMIN['host'],'-p','55432','-U','m0_admin','-d',db],
+    subprocess.run([str(PG/'psql'),'-Xq','-v','ON_ERROR_STOP=1','-h',ADMIN['host'],'-p',str(PORT),'-U','m0_admin','-d',db],
                    input=base+'\n'+install+'\n'+(ROOT/'milestone3/scripts/install.sql').read_text(),text=True,capture_output=True,check=True)
     call('REVOKE ALL ON DATABASE '+db+' FROM PUBLIC; GRANT CONNECT ON DATABASE '+db+' TO chainsql_odoo,chainsql_worker,chainsql_signer,chainsql_observer',db=db)
 create_db(DB)
@@ -89,7 +90,7 @@ class FixtureProvider:
             amountAtomic=s['amount_atomic'],amountDecimals=6,feeAtomic='1000000000000',feeDecimals=18,txHash=a['txHash'],
             receiptStatus='success',matchingTransferLogs=1,blockNumber='20',blockHash='0x'+'33'*32,
             finalizedBlockNumber='20',finalizedBlockHash='0x'+'33'*32,observedAt=datetime.now(timezone.utc).isoformat().replace('+00:00','Z'),providerRequestId=p['providerRequestId'])
-config=json.loads((ROOT/'.local/milestone2/signer.json').read_text());config['database']=roles['signer']
+config=json.loads((RUNTIME/'.local/milestone2/signer.json').read_text());config['database']=roles['signer']
 provider=FixtureProvider();directory=tempfile.mkdtemp(prefix='chainsql-m3-')
 c=ArcController(config,{'database':roles['observer']},provider,directory,TENANT)
 tid,token,fence,s=make_request()
@@ -119,6 +120,12 @@ call("UPDATE chainsql.transfers SET lease_until=clock_timestamp()-interval '1 mi
 call('SELECT chainsql.reconcile_transfer_v1(%s)',(t2,),'observer')
 check('signed Arc cancellation retains reservation',scalar('SELECT reserved FROM chainsql.transfers WHERE id=%s',(t2,)))
 denied('cancelled authorization cannot dispatch',lambda:c.submit(t2,k2,f2))
+r=requests[1]
+call('SELECT chainsql.set_wallet_v1(%s,%s,%s,false)',(TENANT,WALLET,'chainsql_odoo'),'policy')
+call('SELECT chainsql.set_wallet_v1(%s,%s,%s,true)',(TENANT,'replacement-wallet','chainsql_odoo'),'policy')
+denied('rotation disables dispatch from old wallet',lambda:c.submit(*r[:3]))
+check('rotation preserves outstanding reservation',scalar('SELECT reserved FROM chainsql.transfers WHERE id=%s',(r[0],)))
+call('SELECT chainsql.set_wallet_v1(%s,%s,%s,true)',(TENANT,WALLET,'chainsql_odoo'),'policy')
 call('SELECT chainsql.enable_arc_v1(false)',role='policy')
 r=requests[1]
 denied('pause blocks dispatch of saved authorization',lambda:c.submit(*r[:3]))
@@ -141,13 +148,13 @@ check('new owner retains original hash',c.prepare(fid,str(new_token),new_fence)=
 call('SELECT chainsql.enable_arc_v1(false)',role='policy')
 # Native extension-owned runtime data survives pg_dump/restore (including encrypted bytes and nonce high-water).
 backup=Path(directory)/'backup.dump'
-subprocess.run([str(PG/'pg_dump'),'-Fc','-h',ADMIN['host'],'-p','55432','-U','m0_admin','-d',DB,'-f',str(backup)],check=True,capture_output=True)
+subprocess.run([str(PG/'pg_dump'),'-Fc','-h',ADMIN['host'],'-p',str(PORT),'-U','m0_admin','-d',DB,'-f',str(backup)],check=True,capture_output=True)
 restored=DB+'_restored'
 create_db(restored)
 toc=subprocess.check_output([str(PG/'pg_restore'),'--list',str(backup)],text=True)
 tocfile=backup.with_suffix('.toc')
 tocfile.write_text('\n'.join(';'+line if ' SCHEMA - chainsql ' in line else line for line in toc.splitlines())+'\n')
-r=subprocess.run([str(PG/'pg_restore'),'-L',str(tocfile),'-h',ADMIN['host'],'-p','55432','-U','m0_admin','-d',restored,str(backup)],capture_output=True,text=True)
+r=subprocess.run([str(PG/'pg_restore'),'-L',str(tocfile),'-h',ADMIN['host'],'-p',str(PORT),'-U','m0_admin','-d',restored,str(backup)],capture_output=True,text=True)
 if r.returncode:raise RuntimeError(r.stderr)
 check('backup restores nonce high-water',scalar('SELECT next_nonce FROM chainsql.arc_wallet_nonces',db=restored)==8)
 check('backup restores encrypted authorizations',scalar('SELECT count(*) FROM chainsql.transfer_authorizations',db=restored)==8)
@@ -156,5 +163,5 @@ restored_config=dict(config,database=dict(roles['signer'],dbname=restored))
 restored_controller=ArcController(restored_config,{'database':dict(roles['observer'],dbname=restored)},provider,directory,TENANT)
 check('restored dispatched attempt reconciles by original hash',restored_controller.reconcile(tid)['txHash']==result['txHash'])
 check('restore reconciliation never transmits',provider.sends==before_sends)
-(ROOT/'milestone3/evidence/native.json').write_text(json.dumps(dict(verified_at=datetime.now(timezone.utc).isoformat(),database=DB,checks=checks,checks_passed=len(checks),provider='synthetic; no live transfer'),indent=2)+'\n')
+Path(os.environ.get('CHAINSQL_EVIDENCE_FILE',str(ROOT/'milestone3/evidence/native.json'))).write_text(json.dumps(dict(verified_at=datetime.now(timezone.utc).isoformat(),database=DB,checks=checks,checks_passed=len(checks),provider='synthetic; no live transfer'),indent=2)+'\n')
 print('COMPLETE',len(checks),'native checks')

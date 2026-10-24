@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "unauthorized HTTP request denied before payment processing",
+    "authorized HTTP request returns x402 v2 402 challenge",
+    "independent Node verifier accepts Odoo-exported original bytes",
+    "independent Node verifier rejects changed bytes"
+  ],
+  "resource_url": "http://127.0.0.1:8096/resources/6d550001-6744-40fc-bc03-c4f2226f3223",
+  "live_payment_performed": false,
+  "arc_publication_performed": false,
+  "network": "eip155:84532",
+  "price_atomic": "10000"
+}

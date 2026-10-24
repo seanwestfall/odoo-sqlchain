@@ -1,0 +1,14 @@
+{
+  "source": "chainsql_release",
+  "restored": "chainsql_release_restore_ba5ef989",
+  "checks": [
+    "restored_attachment",
+    "pending_probe",
+    "paused",
+    "arc_disabled",
+    "addon upgrade preserves attachment, pending probe and pause",
+    "backup manifest remains valid"
+  ],
+  "test_kind": "synthetic pending probe plus full Odoo filestore; native-m3 separately tests signed pending transfers",
+  "backup_directory": ".local/release/backup-887b9b3e"
+}

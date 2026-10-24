@@ -1,0 +1,21 @@
+✔ exact-byte proof and changed bytes (0.547917ms)
+✔ salt is not in the public commitment payload (0.063792ms)
+✔ approved raw transaction is bound to exact commitment and zero value (2.013667ms)
+✔ reject changed recipient (2.863833ms)
+✔ reject changed value (4.095958ms)
+✔ reject changed data (2.281625ms)
+✔ reject changed nonce (2.229292ms)
+✔ reject changed chain (0.718125ms)
+✔ reject changed fee (6.133666ms)
+✔ independent verifier reads canonical finalized chain record (0.246875ms)
+✔ independent verifier rejects changed chain data (0.13475ms)
+✔ independent verifier rejects unfinalized receipt (0.090459ms)
+✔ persist before transmission; timeout recovers original hash (12.061541ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 242.889167

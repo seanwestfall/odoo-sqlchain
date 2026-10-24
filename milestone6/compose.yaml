@@ -1,0 +1,18 @@
+name: chainsql-m6
+services:
+  odoo:
+    image: odoo:19.0@sha256:a627eda6b4154eead21c4fca55f84f1671d870ca111aa57f93ca305861bc4613
+    ports:
+      - "127.0.0.1:8072:8069"
+    environment:
+      CHAINSQL_DOCUMENT_KEY_FILE: /run/chainsql/document.key
+    volumes:
+      - ../vendor/odoo/odoo:/usr/lib/python3/dist-packages/odoo:ro
+      - ../vendor/odoo/addons:/mnt/extra-addons:ro
+      - ../chainsql/odoo_addons:/mnt/chainsql-addons:ro
+      - ../.local/milestone6/odoo.conf:/etc/odoo/odoo.conf:ro
+      - ../.local/milestone6/document.key:/run/chainsql/document.key:ro
+      - odoo-data:/var/lib/odoo
+    command: ["odoo", "-d", "chainsql_m6_dev", "--db-filter=^chainsql_m6_dev$", "--no-database-list"]
+volumes:
+  odoo-data:

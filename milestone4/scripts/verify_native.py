@@ -1,3 +1,4 @@
+import os
 """Disposable native database integration tests. No live signing or settlement."""
 from pathlib import Path
 import sys,json,uuid,subprocess,concurrent.futures,copy,tempfile,base64
@@ -5,16 +6,16 @@ from datetime import datetime,timedelta,timezone
 from contextlib import closing
 import psycopg2
 from psycopg2.extras import Json
-ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'chainsql/x402'))
+ROOT=Path(__file__).resolve().parents[2];RUNTIME=Path(os.environ.get('CHAINSQL_RUNTIME_ROOT',str(ROOT)));PORT=int(os.environ.get('CHAINSQL_PG_PORT','55432'));sys.path.insert(0,str(ROOT/'chainsql/x402'))
 from controller import ResourceController,BoundaryError
-PG=Path('/opt/homebrew/opt/postgresql@16/bin');DB='chainsql_m4_verify_'+uuid.uuid4().hex[:8]
-admin=dict(host=str(ROOT/'.local/milestone0/socket'),port=55432,user='m0_admin',dbname=DB)
-c0=json.loads((ROOT/'.local/milestone0/credentials.json').read_text());c2=json.loads((ROOT/'.local/milestone2/credentials.json').read_text())
-roles={r:dict(host='127.0.0.1',port=55432,dbname=DB,user='chainsql_'+r,password=(c0 if r in ['odoo','worker'] else c2)[r]) for r in ['odoo','worker','signer','observer']}
+PG=Path(os.environ.get('PG_BIN','/opt/homebrew/opt/postgresql@16/bin'));DB='chainsql_m4_verify_'+uuid.uuid4().hex[:8]
+admin=dict(host=str(RUNTIME/'.local/milestone0/socket'),port=PORT,user='m0_admin',dbname=DB)
+c0=json.loads((RUNTIME/'.local/milestone0/credentials.json').read_text());c2=json.loads((RUNTIME/'.local/milestone2/credentials.json').read_text())
+roles={r:dict(host='127.0.0.1',port=PORT,dbname=DB,user='chainsql_'+r,password=(c0 if r in ['odoo','worker'] else c2)[r]) for r in ['odoo','worker','signer','observer']}
 with closing(psycopg2.connect(**dict(admin,dbname='postgres'))) as db:
  db.autocommit=True
  with db.cursor() as cur:cur.execute('CREATE DATABASE '+DB+' OWNER chainsql_odoo TEMPLATE template0')
-cmd=[str(PG/'psql'),'-Xq','-v','ON_ERROR_STOP=1','-h',admin['host'],'-p','55432','-U','m0_admin','-d',DB]
+cmd=[str(PG/'psql'),'-Xq','-v','ON_ERROR_STOP=1','-h',admin['host'],'-p',str(PORT),'-U','m0_admin','-d',DB]
 script='\n'.join((ROOT/p).read_text() for p in ['milestone0/scripts/install_extension.sql','milestone2/scripts/install.sql','milestone3/scripts/install.sql','milestone4/scripts/install.sql'])
 subprocess.run(cmd,input=script,text=True,check=True,capture_output=True)
 def call(sql,args=(),role='admin'):
@@ -122,5 +123,5 @@ denied('Stale fence cannot save independent authorization',lambda:call('SELECT c
 # Transaction rollback leaves neither a queued transfer nor a new resource link.
 five,a5,s5,r5=request();call('SELECT chainsql.cancel_transfer_v1(%s)',(five,),'odoo')
 denied('Even accidental approval UPDATE is rejected',lambda:call("UPDATE chainsql.resource_approvals SET request=request || '{\"method\":\"POST\"}'::jsonb WHERE approval_id=%s",(a5,)))
-(ROOT/'milestone4/evidence/native.json').write_text(json.dumps({'database':DB,'checks':checks,'count':len(checks),'synthetic_provider':True},indent=2))
+Path(os.environ.get('CHAINSQL_EVIDENCE_FILE',str(ROOT/'milestone4/evidence/native.json'))).write_text(json.dumps({'database':DB,'checks':checks,'count':len(checks),'synthetic_provider':True},indent=2))
 print('Native checks:',len(checks))

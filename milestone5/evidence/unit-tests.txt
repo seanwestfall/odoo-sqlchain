@@ -1,0 +1,20 @@
+test_advisory_cannot_promote (__main__.Decisions.test_advisory_cannot_promote) ... ok
+test_amount (__main__.Decisions.test_amount) ... ok
+test_budget_changes (__main__.Decisions.test_budget_changes) ... ok
+test_clean_delegated (__main__.Decisions.test_clean_delegated) ... ok
+test_defer_requires_future_date (__main__.Decisions.test_defer_requires_future_date) ... ok
+test_disabled (__main__.Decisions.test_disabled) ... ok
+test_discount_changes (__main__.Decisions.test_discount_changes) ... ok
+test_duplicate (__main__.Decisions.test_duplicate) ... ok
+test_expiry (__main__.Decisions.test_expiry) ... ok
+test_fingerprint_changes (__main__.Decisions.test_fingerprint_changes) ... ok
+test_missing_receipt (__main__.Decisions.test_missing_receipt) ... ok
+test_more_conservative_action (__main__.Decisions.test_more_conservative_action) ... ok
+test_no_recipient_tool_or_limit_fields (__main__.Decisions.test_no_recipient_tool_or_limit_fields) ... ok
+test_receipt_changes (__main__.Decisions.test_receipt_changes) ... ok
+test_threshold (__main__.Decisions.test_threshold) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.000s
+
+OK

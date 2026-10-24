@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+policy_operator,policy operator,model_chainsql_purchase_policy,chainsql_base.group_operator,1,0,0,0
+policy_approver,policy approver,model_chainsql_purchase_policy,chainsql_base.group_approver,1,1,1,0
+decision_operator,decision operator,model_chainsql_purchase_decision,chainsql_base.group_operator,1,1,1,0
+agent_po,agent PO evidence,purchase.model_purchase_order,group_advisory_agent,1,0,0,0
+agent_line,agent PO line evidence,purchase.model_purchase_order_line,group_advisory_agent,1,0,0,0
+agent_move,agent receipt evidence,stock.model_stock_move,group_advisory_agent,1,0,0,0
+agent_picking,agent picking evidence,stock.model_stock_picking,group_advisory_agent,1,0,0,0

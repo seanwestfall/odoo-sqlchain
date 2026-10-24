@@ -1,0 +1,34 @@
+PASS: encrypted authorization committed before transmission
+PASS: same preparation reuses authorization
+PASS: Arc cannot pass through mock settlement gateway
+PASS: lost submission response classified uncertain
+PASS: original hash recovered without another signing or submission
+PASS: repeated observation does not spend twice
+PASS: reject missing receipt field state
+PASS: reject missing receipt field feeAtomic
+PASS: reject missing receipt field blockNumber
+PASS: reject missing receipt field finalizedBlockNumber
+PASS: reject missing receipt field providerRequestId
+PASS: reject missing receipt field matchingTransferLogs
+PASS: odoo cannot inspect authorization
+PASS: odoo cannot enable Arc
+PASS: worker cannot inspect authorization
+PASS: worker cannot enable Arc
+PASS: concurrent workers allocate unique sender nonces
+PASS: signed Arc cancellation retains reservation
+PASS: cancelled authorization cannot dispatch
+PASS: rotation disables dispatch from old wallet
+PASS: rotation preserves outstanding reservation
+PASS: pause blocks dispatch of saved authorization
+PASS: reconciliation works with execution disabled
+PASS: authorization persistence failure prevents dispatch
+PASS: failed persistence sends no transaction
+PASS: failed save recovery reuses encrypted journal authorization
+PASS: stale worker cannot sign after ownership changes
+PASS: new owner retains original hash
+PASS: backup restores nonce high-water
+PASS: backup restores encrypted authorizations
+PASS: backup restores terminal observation
+PASS: restored dispatched attempt reconciles by original hash
+PASS: restore reconciliation never transmits
+COMPLETE 33 native checks

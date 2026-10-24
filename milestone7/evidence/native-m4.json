@@ -1,0 +1,30 @@
+{
+  "database": "chainsql_m4_verify_95f82064",
+  "checks": [
+    "Identical enqueue returns same obligation",
+    "Changed request rejected",
+    "Worker cannot read encrypted authorizations",
+    "Worker cannot change budget",
+    "Concurrent requests cannot exceed budget",
+    "Exhausted budget denies signing claim",
+    "Authorization persistence failure closes dispatch",
+    "No HTTP payment after failed save",
+    "Retry reuses journal authorization without resigning",
+    "Payment and resource states independently observed",
+    "Reconciliation neither signs nor transmits",
+    "Authorization digest unchanged",
+    "Lost response and unavailable observer retain reservation",
+    "Lost response recovered with original authorization",
+    "Public status excludes authorization bytes",
+    "Pause blocks signing",
+    "Revoked approval blocks signing",
+    "Unsigned cancellation releases reservation",
+    "Missing transaction cannot confirm payment",
+    "Cancellation after dispatch requires reconciliation",
+    "No simulator release of x402 budget",
+    "Stale fence cannot save independent authorization",
+    "Even accidental approval UPDATE is rejected"
+  ],
+  "count": 23,
+  "synthetic_provider": true
+}

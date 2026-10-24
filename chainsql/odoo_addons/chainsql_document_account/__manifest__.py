@@ -1,0 +1,1 @@
+{'name':'ChainSQL private document proofs','version':'19.0.1.0.0','license':'LGPL-3','depends':['chainsql_account'], 'data':['security/ir.model.access.csv','security/rules.xml','views/proof.xml'],'installable':True}

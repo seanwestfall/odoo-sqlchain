@@ -1,0 +1,27 @@
+{
+  "postgres_version": "16.15 (Homebrew)",
+  "extension_version": "0.4.0",
+  "paused": true,
+  "arc_enabled": false,
+  "operations_by_state": [],
+  "uncertain_operation_count": 0,
+  "oldest_queued_seconds": null,
+  "mean_queue_to_first_claim_seconds": null,
+  "reservations": [],
+  "mean_dispatch_to_observation_seconds": null,
+  "resource_delivery_failures": 0,
+  "resource_delivery_pending": 0,
+  "resources_delivered": 0,
+  "mock_results": 0,
+  "dataset": "synthetic",
+  "real_revenue": null,
+  "duplicate_suppression_count": null,
+  "human_interventions": null,
+  "real_users_verified": 0,
+  "notes": [
+    "Atomic values grouped by network/interface; company totals only to avoid double-counting wallet reservations.",
+    "Duplicate attempts and human interventions are not yet persistently counted; null does not mean zero.",
+    "Observed synthetic results are not settlement. Test USDC is not revenue.",
+    "No genuine business pilot has been supplied."
+  ]
+}

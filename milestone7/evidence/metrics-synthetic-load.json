@@ -1,0 +1,57 @@
+{
+  "postgres_version": "16.15 (Homebrew)",
+  "extension_version": "0.4.0",
+  "paused": false,
+  "arc_enabled": null,
+  "operations_by_state": [
+    {
+      "network": "eip155:84532",
+      "state": "requested",
+      "count": 1
+    },
+    {
+      "network": "eip155:84532",
+      "state": "cancelled",
+      "count": 2
+    },
+    {
+      "network": "eip155:84532",
+      "state": "observed",
+      "count": 2
+    },
+    {
+      "network": "eip155:84532",
+      "state": "reconciliation",
+      "count": 1
+    }
+  ],
+  "uncertain_operation_count": 1,
+  "oldest_queued_seconds": 27030.214536,
+  "mean_queue_to_first_claim_seconds": 0.0192145,
+  "reservations": [
+    {
+      "network": "eip155:84532",
+      "interface": "x402-eip3009-6",
+      "amount_atomic": "10000",
+      "fee_atomic": "0"
+    }
+  ],
+  "mean_dispatch_to_observation_seconds": null,
+  "resource_delivery_failures": 0,
+  "resource_delivery_pending": 0,
+  "resources_delivered": 2,
+  "mock_results": 0,
+  "dataset": "synthetic",
+  "real_revenue": null,
+  "duplicate_suppression_count": 1,
+  "human_interventions": 0,
+  "real_users_verified": 0,
+  "notes": [
+    "Atomic values grouped by network/interface; company totals only to avoid double-counting wallet reservations.",
+    "Event counters cover only explicit operator-attested entries in the selected dataset/database; absence does not prove no unrecorded events.",
+    "Observed synthetic results are not settlement. Test USDC is not revenue.",
+    "No genuine business pilot has been supplied."
+  ],
+  "useful_work_completed": 0,
+  "event_measurement_source": "operator-attested ledger; not automatic instrumentation"
+}

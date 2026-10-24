@@ -1,0 +1,14 @@
+✔ SDK v2 types and real EIP-712 authorization accepted (240.504208ms)
+✔ wrong buyer identity rejected (156.78325ms)
+✔ changed resource rejected (159.284917ms)
+✔ changed amount rejected (160.836667ms)
+✔ changed signing domain rejected (185.44ms)
+✔ grant shorter than authorization rejected (187.5595ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1223.419625

@@ -1,0 +1,22 @@
+{
+  "bill_id": 70,
+  "document_id": 1,
+  "checks": [
+    "snapshot starts unapproved despite injected default",
+    "unapproved export denied",
+    "exact bytes exported",
+    "source initially matches",
+    "changed source detected",
+    "approved version survives source edit",
+    "immutable snapshot fields",
+    "early purge denied",
+    "other company cannot read",
+    "other company cannot approve",
+    "other company cannot export",
+    "operator cannot export private content",
+    "operator cannot read ciphertext",
+    "expired snapshot purged with metadata retained",
+    "original Odoo attachment separately retained"
+  ],
+  "synthetic": true
+}
